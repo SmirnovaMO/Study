@@ -17,11 +17,10 @@ def set():
             hour = int(rem.split(':')[0])
             minute = int(rem.split(':')[1])
             now = datetime.datetime.now()
-            print(now)
             dt = now.replace(hour=hour, minute=minute, second=0)
-            print(dt)
             t = dt.timestamp()
-            print(t)
+            label = Label(text=f'Напоминание установлено на {hour}:{minute}')
+            label.pack()
         except Exception as e:
             mb.showerror('Ошибка!', f'Произошла ошибка {e}')
 
@@ -55,13 +54,14 @@ def stop_music():
 
 
 window = Tk()
+window.geometry('300x200')
 window.title('Напоминание')
 label = Label(text='Установите напоминание', font=('Arial, 14'))
 label.pack(pady=10)
 set_button = Button(text='Установить напоминание', command=set)
-set_button.pack()
+set_button.pack(pady=10)
 stop_button = Button(text='Остановить музыку', command=stop_music)
-stop_button.pack()
+stop_button.pack(pady=10)
 
 check()
 
