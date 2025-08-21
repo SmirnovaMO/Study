@@ -5,8 +5,7 @@ import datetime
 import time
 import pygame
 
-t = 0
-
+t = None
 
 def set():
     global t
@@ -22,7 +21,7 @@ def set():
             t = dt.timestamp()
             print(t)
         except Exception as e:
-            print('Ошибка!', f'Произошла ошибка {e}')
+            mb.showerror('Ошибка!', f'Произошла ошибка {e}')
 
 
 def check():
@@ -30,14 +29,15 @@ def check():
     if t:
         now = time.time()
         if now >=t:
+            print('Сейчас должна заиграть музыка')
             play_snd()
             t = None
     window.after(10000, check)
-
+    print(datetime.datetime.now())
 
 def play_snd():
     pygame.mixer.init()
-    pygame.mixer.music.load('Reminder.mp3')
+    pygame.mixer.music.load('reminder.mp3')
     pygame.mixer.music.play()
 
 
@@ -47,5 +47,7 @@ label = Label(text='Установите напоминание')
 label.pack(pady=10)
 set_button = Button(text='Установить напоминание', command=set)
 set_button.pack()
+
+check()
 
 window.mainloop()
