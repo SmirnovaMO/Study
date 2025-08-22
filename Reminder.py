@@ -1,4 +1,3 @@
-from idlelib.debugger_r import wrap_info
 from tkinter import *
 from tkinter import messagebox as mb
 from tkinter import simpledialog as sd
@@ -63,7 +62,6 @@ window.geometry(f'400x180+{w1}+{h1}')
 window.title('Напоминание')
 label = Label(text='Установите напоминание')
 label.pack(pady=10)
-print(f'Длина строки с меткой равна {l} символам.')
 set_button = Button(text='Установить напоминание', command=set)
 set_button.pack(pady=10)
 stop_button = Button(text='Остановить музыку', command=stop_music)
