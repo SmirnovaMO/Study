@@ -19,8 +19,8 @@ def set():
             now = datetime.datetime.now()
             dt = now.replace(hour=hour, minute=minute, second=0)
             t = dt.timestamp()
-            label.config(text=f'Напоминание установлено на {hour:02}:{minute:02}')
-            label.pack()
+            text = sd.askstring('Текст напоминания', 'Введите текст напоминания.')
+            label.config(text=f'Напоминание установлено на {hour:02}:{minute:02} с текстом {text}')
         except Exception as e:
             mb.showerror('Ошибка!', f'Произошла ошибка {e}')
 
@@ -54,7 +54,6 @@ def stop_music():
 
 
 window = Tk()
-window.geometry('300x160')
 window.title('Напоминание')
 label = Label(text='Установите напоминание', font=('Arial, 10'))
 label.pack(pady=10)
